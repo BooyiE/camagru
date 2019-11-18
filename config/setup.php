@@ -15,7 +15,7 @@
   try {
     $conn = new PDO("mysql:host=$host;dbname=camagru", $dbusername, $dbpass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE TABLE `comments` (
+    $sql = "CREATE TABLE IF NOT EXISTS `comments` (
       `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
       `username` varchar(200) DEFAULT NULL,
       `image_id` int(11) NOT NULL,
@@ -31,7 +31,7 @@
   try {
     $conn = new PDO("mysql:host=$host;dbname=camagru", $dbusername, $dbpass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE TABLE `images` (
+    $sql = "CREATE TABLE IF NOT EXISTS `images` (
       `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
       `username` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
       `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -47,7 +47,7 @@
   try {
     $conn = new PDO("mysql:host=$host;dbname=camagru", $dbusername, $dbpass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE TABLE `likes` (
+    $sql = "CREATE TABLE IF NOT EXISTS `likes` (
       `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
       `username` varchar(200) NOT NULL,
       `image_id` int(11) NOT NULL
@@ -62,7 +62,7 @@
   try {
     $conn = new PDO("mysql:host=$host;dbname=camagru", $dbusername, $dbpass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE TABLE `table` (
+    $sql = "CREATE TABLE IF NOT EXISTS `table` (
       `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
       `username` varchar(25) NOT NULL,
       `email` varchar(100) NOT NULL,
@@ -78,18 +78,18 @@
     exit(1);
   }
 
-  try {
-    $conn = new PDO("mysql:host=$host;dbname=camagru", $dbusername, $dbpass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE TABLE `uploads` (
-      `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      `image` varchar(100) NOT NULL,
-      `image_text` text NOT NULL
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
-    $conn->exec($sql);
-    echo "uploads table created successfully<br>";
-  } catch (PDOException $e) {
-    echo $e->getMessage();
-    exit(1);
-  }
+//   try {
+//     $conn = new PDO("mysql:host=$host;dbname=camagru", $dbusername, $dbpass);
+//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     $sql = "CREATE TABLE IF NOT EXISTS `uploads` (
+//       `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//       `image` varchar(100) NOT NULL,
+//       `image_text` text NOT NULL
+//     ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+//     $conn->exec($sql);
+//     echo "uploads table created successfully<br>";
+//   } catch (PDOException $e) {
+//     echo $e->getMessage();
+//     exit(1);
+//   }
 ?>
