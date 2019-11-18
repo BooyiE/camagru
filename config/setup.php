@@ -1,5 +1,6 @@
 <?php
   require("../server.php");
+  require("database.php");
 
   try {
       $dbh = new PDO("mysql:host=$host", $dbusername, $dbpass);
